@@ -23,7 +23,7 @@ class Conta {
 }
 
 class Pessoa {
-	String titular;
+	String nome;
 	String cpf;
 	String dataNascimento;
 }
@@ -34,8 +34,13 @@ class ProgramaConta {
 
 		fernando.numero = 123;
 		fernando.saldo = 800.0;
-		fernando.titular = "Fernando Ghinzelli";
+		fernando.titular = new Pessoa();
+		fernando.titular.nome = "Fernando Ghinzelli";
+		fernando.titular.cpf = "123443354";
+		fernando.titular.dataNascimento = "14/08/1985";
 		fernando.agencia = 842;
+
+		System.out.println(fernando.titular.nome);
 
 		fernando.deposita(100);
 		fernando.saca(50);
