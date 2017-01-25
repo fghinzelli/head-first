@@ -28,7 +28,7 @@ class Exercicio {
 	public static void main(String[] args) {
 		int x = 13;
 
-		System.out.print(x + " > ");
+		System.out.print(x + " >> ");
 		
 		while(x != 1) {
 			if (x % 2 == 0) {
