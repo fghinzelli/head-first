@@ -1,3 +1,5 @@
+# -*- coding:UTF-8 -*-
+
 def cadastrar(nomes):
 	print 'Digite o nome:'
 	nome = raw_input()
@@ -37,7 +39,7 @@ def menu():
 	escolha = ''
 
 	while (escolha != '0'):
-		print 'Digite: 1 para cadastrar, 2 para alterar, 3 para remover, 4 para listar, 5 procurar, 0 para terminar'
+		print 'Digite: 1 para cadastrar, 2 para alterar, 3 para remover, 4 para listar, 5 procurar, 6 para regex, 0 para terminar'
 		escolha = raw_input()
 
 		if (escolha == '1'):
@@ -50,6 +52,17 @@ def menu():
 			listar(nomes)
 		elif (escolha == '5'):
 			procurar(nomes)
+		elif (escolha == '6'):
+			procurar_regex(nomes)
+
+def procurar_regex(nomes):
+
+	import re
+	print('Digite a expressão regular:')
+	regex = raw_input()
+	nomes_concatenados = ''.join(nomes)
+	resultados = re.findall(regex, nomes_concatenados)
+	print 'Resultado da pesquisa: %s' % (resultados)
 
 menu()
 
