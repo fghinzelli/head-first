@@ -23,7 +23,7 @@ class Perfil(object):
 		perfis = []
 		for linha in arquivo:
 			valores = linha.split(',')
-			perfis.append(Perfil(*valores))
+			perfis.append(classe(*valores))
 		arquivo.close()
 		return perfis
 
