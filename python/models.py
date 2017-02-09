@@ -3,6 +3,8 @@
 class Perfil(object):
 	'Classe padrão para perfis de usuários'
 	def __init__(self, nome, telefone, empresa):
+		if(len(nome) > 3):
+			raise ArgumentoInvalidoError('Nome deve ter pelo menos 3 caracateres')
 		self.nome = nome
 		self.telefone = telefone
 		self.empresa = empresa
@@ -23,6 +25,8 @@ class Perfil(object):
 		perfis = []
 		for linha in arquivo:
 			valores = linha.split(',')
+			if (len(valores) is not 3):
+				raise Perfil_Error('Uma linha  deve ter 3 valores')
 			perfis.append(classe(*valores))
 		arquivo.close()
 		return perfis
@@ -37,6 +41,13 @@ class Perfil_Vip(Perfil):
 	def obter_creditos(self):
 		return super(Perfil_Vip, self).obter_curtidas() * 10.0
 
+
+class Perfil_Error(Exception):
+	def __init__(self, mensagem):
+		self.mensagem = mensagem
+
+	def __str__(self):
+		return repr(self.mensagem)
 
 class Data(object):
 	'Classe para exibir datas formatadas'

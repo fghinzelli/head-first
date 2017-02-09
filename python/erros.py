@@ -2,7 +2,7 @@ from models import *
 arquivo = None
 try:
 	arquivo = open('perfis.csv','r')
-	valores = arquivo.readline().split(':')
+	valores = arquivo.readline().split(',')
 	Perfil(*valores)
 	print('arquivo foi aberto')
 	arquivo.close()
