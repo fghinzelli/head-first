@@ -1,3 +1,6 @@
+from nester import print_lol
+import pickle
+
 man = []
 other = []
 try:
@@ -22,9 +25,9 @@ finally:
 
 try:
 	# O bloco with se encarrega de fechar o arquivo ao final
-	with open("man.txt", "w") as out_man, open('other.txt', 'w') as out_other:
-		print(man, file=out_man)
-		print(other, file=out_other)
+	with open("man.txt", "wb") as out_man, open('other.txt', 'wb') as out_other:
+		pickle.dump(man, out_man)
+		pickle.dump(other, out_other)
 
-except IOError as err:
-	print('File Error: ' + str(err))
+except pickle.PickleError as perr:
+	print('Pickling Error: ' + str(perr))
