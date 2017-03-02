@@ -1,12 +1,14 @@
 
-class Athlete:
-	def __init__(self, a_name, a_doc=None, a_times=[]):
+class AthleteList(list):
+	def __init__(self, a_name, a_dob=None, a_times=[]):
+		list.__init__([])
 		self.name = a_name
-		self.doc = a_doc
-		self.times = a_times
+		self.dob = a_dob
+		self.extend(a_times)
 
 	def top3(self):
-		return str(sorted(set([sanitize(each_item) for each_item in self.times]))[0:3])
+		return str(sorted(set([sanitize(each_item) for each_item in self]))[0:3])
+
 def sanitize(time_string):
 	""" 
 	Substitui os caracters '-' e ':' por virgula
@@ -26,7 +28,7 @@ def get_coach_data(file_name):
 			data = ln.readline()
 
 		templ = data.strip().split(',')
-		return (Athlete(templ.pop(0), templ.pop(0), templ))
+		return (AthleteList(templ.pop(0), templ.pop(0), templ))
 
 	except IOError as err:
 		print("Ocorreu um erro: " + err)
